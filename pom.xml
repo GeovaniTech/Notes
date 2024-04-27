@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.devpree</groupId>
+	<artifactId>
+		notes</artifactId>
+	<version>1.0.X-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<modules>
+		<module>server-notes-web</module>
+		<module>server-notes-model</module>
+		<module>server-notes-business</module>
+		<module>server-notes-utils</module>
+		<module>server-notes</module>
+	</modules>
+
+	<distributionManagement>
+		<repository>
+			<id>notes-new-architecture</id>
+			<name>notes-new-architecture</name>
+			<url>file://.m2/repository</url>
+		</repository>
+	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>jakarta.platform</groupId>
+				<artifactId>jakarta.jakartaee-api</artifactId>
+				<version>10.0.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.devpree</groupId>
+				<artifactId>server-notes-web</artifactId>
+				<version>1.0.X-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.devpree</groupId>
+				<artifactId>server-notes-model</artifactId>
+				<version>1.0.X-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.devpree</groupId>
+				<artifactId>server-notes-business</artifactId>
+				<version>1.0.X-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.devpree</groupId>
+				<artifactId>server-notes-utils</artifactId>
+				<version>1.0.X-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.devpree</groupId>
+				<artifactId>server-notes</artifactId>
+				<version>1.0.X-SNAPSHOT</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>3.1.1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.6.1</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>
