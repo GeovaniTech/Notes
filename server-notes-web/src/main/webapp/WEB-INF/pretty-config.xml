@@ -33,7 +33,7 @@
 	<!-- END LOGIN -->
 	
 	<url-mapping id="home">
-		<pattern value="/home" />
+		<pattern value="/client/home" />
 		<view-id value="/htdocs/client/home/home.xhtml" />
 	</url-mapping>
 	

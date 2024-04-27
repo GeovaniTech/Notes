@@ -19,7 +19,7 @@
 }
 
 .logo span {
-	color: var(--blue);
+	color: var(--primary-color-sys);
 }
 
 .logo h1 {
@@ -128,15 +128,15 @@ form {
 }
 
 .img-atendimento:hover {
-	color: var(--blue) !important;
+	color: var(--primary-color-sys) !important;
 }
 
 .atendimento a:hover {
-	color: var(--blue) !important;
+	color: var(--primary-color-sys) !important;
 }
 
 .buttonClass {
-    background-color: var(--blue) !important;
+    background-color: var(--primary-color-sys) !important;
     border: none !important;
     color: white !important;
     padding: 5px 52px !important;
@@ -152,7 +152,7 @@ form {
 }
 
 .buttonClass:hover {
-	background-color: var(--blue-mouse) !important;	
+	background-color: var(--primary-color-sys-mouse) !important;	
 }
 
 .options {
@@ -183,7 +183,7 @@ form {
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--blue);
+    background-color: var(--primary-color-sys);
 }
 
 @media (max-height: 850px) {

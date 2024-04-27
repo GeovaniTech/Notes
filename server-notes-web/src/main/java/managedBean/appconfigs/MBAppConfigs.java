@@ -125,7 +125,7 @@ public class MBAppConfigs extends AbstractMBean {
 		removeUserFromCookie();
 		finishSession();
 		
-		RedirectURL.redirectTo("/investme/login");
+		RedirectURL.redirectTo("/notes/login");
 	}
 	
 	public boolean isUserLogged() {

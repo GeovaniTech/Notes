@@ -18,10 +18,37 @@
 .left-menu .item {
 	padding: 10px;
 	width: 100%;
+	transition: 0.4s;
+	border-radius: 5px;
+}
+
+.item p {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.item:hover {
+	background-color: var(--background-general-mouse);
+}
+
+.button:hover {
+	background-color: var(--background-general);
+}
+
+.submenu {
+	padding: 10px;
+	width: 100%;
 }
 
 .submenu p {
 	border-bottom: 1px solid #D3D3D3;
+}
+
+.logout {
+	background-color: var(--background-general-mouse);
+	bottom: 0px;
+	position: absolute;
 }
 
 .container-new-edit-notes {

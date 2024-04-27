@@ -27,10 +27,7 @@ public class Client extends AbstractObject {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AppConfig appConfig;
-	
-	@OneToMany
-	private List<Note> notes;
-	
+
 	public Client() {
 		this.setBlocked(false);
 	}
@@ -106,14 +103,6 @@ public class Client extends AbstractObject {
 
 	public void setAppConfig(AppConfig appConfig) {
 		this.appConfig = appConfig;
-	}
-
-	public List<Note> getNotes() {
-		return notes;
-	}
-
-	public void setNotes(List<Note> notes) {
-		this.notes = notes;
 	}
 	
 }

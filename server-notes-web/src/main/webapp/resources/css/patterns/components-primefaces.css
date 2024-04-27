@@ -41,13 +41,13 @@
 
 .ui-button {
 	color: white !important;
-	background-color: var(--blue) !important;
-	border-color: var(--blue) !important;
+	background-color: var(--primary-color-sys) !important;
+	border-color: var(--primary-color-sys) !important;
 }
 
 .ui-button:hover {
- 	border-color: var(--blue-mouse) !important;
-	background-color: var(--blue-mouse) !important;
+ 	border-color: var(--primary-color-sys-mouse) !important;
+	background-color: var(--primary-color-sys-mouse) !important;
 }
 
 .optionsButtonStyle {
@@ -209,7 +209,7 @@ body .ui-datepicker .ui-datepicker-calendar td>a, body .ui-datepicker .ui-datepi
 }
 
 .ui-datatable .ui-datatable-data > tr.ui-state-highlight, .ui-datatable .ui-datatable-data tr.ui-state-highlight:hover {
-	background-color: var(--blue-mouse) !important;
+	background-color: var(--primary-color-sys-mouse) !important;
 	color: white !important;
 }
 
@@ -226,7 +226,7 @@ body .ui-datepicker .ui-datepicker-calendar td>a, body .ui-datepicker .ui-datepi
 }
 
 .ui-datatable .ui-paginator-page.ui-state-active	 {
-	background-color: var(--blue) !important;
+	background-color: var(--primary-color-sys) !important;
 	color: #FFFFFF !important;
 }
 
@@ -242,7 +242,7 @@ body .ui-datepicker .ui-datepicker-calendar td>a, body .ui-datepicker .ui-datepi
 
 .ui-tabs {
 	background-color: var(--background-general) !important;
-	color: var(--blue) !important;
+	color: var(--primary-color-sys) !important;
 }
 
 .ui-tabs-nav:before {
@@ -260,7 +260,7 @@ body .ui-datepicker .ui-datepicker-calendar td>a, body .ui-datepicker .ui-datepi
 
 .ui-tabs-nav {
 	background-color: var(--background-general) !important;
-	border-color: var(--blue) !important;
+	border-color: var(--primary-color-sys) !important;
 }
 
 .ui-tabs-panel {
@@ -289,7 +289,7 @@ body .ui-datepicker .ui-datepicker-calendar td>a, body .ui-datepicker .ui-datepi
 /* #################### RATING #################### */
 
 .ui-rating > input {
-	color: var(--blue) !important;
+	color: var(--primary-color-sys) !important;
 }
 
 /* #################### OVERLAYPANEl #################### */
@@ -316,11 +316,6 @@ body .ui-datepicker .ui-datepicker-calendar td>a, body .ui-datepicker .ui-datepi
 	background-color: var(--second-color-widget) !important;
 	border-color: var(--second-color-widget) !important;
 	color: var(--text-mouse) !important;
-}
-
-.ui-orderlist-item:hover, .ui-state-highlight {
-	background-color: var(--blue) !important;
-	color: var(--white) !important;
 }
 
 /* #################### AccordionPanel #################### */

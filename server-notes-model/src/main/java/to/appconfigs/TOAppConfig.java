@@ -12,10 +12,10 @@ public class TOAppConfig extends AbstractTOObject {
 	private boolean showValuesStartUp;
 	
 	// Getters and Setters
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getLanguage() {
