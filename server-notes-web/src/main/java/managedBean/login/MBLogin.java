@@ -37,7 +37,7 @@ public class MBLogin extends AbstractMBean {
 			if(this.getClientSBean().logar(this.getEmail(), this.getPassword())) {
 				this.getMBAppConfigs().configAppByUserPreferences();
 				
-				RedirectURL.redirectTo("/investme/client/wallet");
+				RedirectURL.redirectTo("/notes/home");
 			}
 			
 			return;
@@ -59,19 +59,19 @@ public class MBLogin extends AbstractMBean {
 	}
 	
 	public void sendEmailForgotPassoword() {
-		String title = "InvestMe - Solicitação de Troca de Senha";
+		String title = "Notes - Solicitação de Troca de Senha";
 		
 		StringBuilder description = new StringBuilder();
 		
-		description.append("<h2>Troca de Senha de acesso ao InvestMe<h2/>");
+		description.append("<h2>Troca de Senha de acesso ao Notes<h2/>");
 		description.append("<p>Olá,</p>");
 		description.append("<p>Para trocar sua senha de acesso, entre no link abaixo e insira sua nova senha.</p>");
-		description.append("<p><a href=https://www.devpree.com.br/investme/newpassword/");
+		description.append("<p><a href=http://localhost:8080/notes/newpassword/");
 		description.append(JWTUtil.generateToken("newPassword", EncryptionUtil.encryptNormalText(this.getEmail()))).append(">Troca de Senha</a><p/>");
-		description.append("<p>Caso você não tenha solicitado a troca de senha no InvestMe ");
+		description.append("<p>Caso você não tenha solicitado a troca de senha no Notes ");
 		description.append("ou acredite que este email tenha sido enviado por engano, por favor, desconsidere esta mensagem.</p>");
 		description.append("Atenciosamente, <br>");
-		description.append("A equipe InvestMe <br>");
+		description.append("A equipe Devpree <br>");
 		
 		TOLog log = new TOLog();
 		log.setCategory(EnumLogCategory.RECOVERY_EMAIL);

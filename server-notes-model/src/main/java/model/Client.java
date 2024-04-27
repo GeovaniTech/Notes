@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 import abstracts.AbstractObject;
 import jakarta.persistence.CascadeType;
@@ -8,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -25,6 +27,9 @@ public class Client extends AbstractObject {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AppConfig appConfig;
+	
+	@OneToMany
+	private List<Note> notes;
 	
 	public Client() {
 		this.setBlocked(false);
@@ -101,6 +106,14 @@ public class Client extends AbstractObject {
 
 	public void setAppConfig(AppConfig appConfig) {
 		this.appConfig = appConfig;
+	}
+
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
 	}
 	
 }

@@ -40,7 +40,7 @@ public class AdminSecurityLevelFilter extends HttpFilter implements Filter {
 		
 		if(client == null || client.getSecurityLevel().equals("client")) {
 			response.setStatus(401);
-			response.sendRedirect("/investme/login");
+			response.sendRedirect("/notes/login");
 
 		} else {
 			chain.doFilter(request, response);

@@ -1,9 +1,11 @@
 package to.client;
 
 import java.util.Date;
+import java.util.List;
 
 import abstracts.AbstractTOObject;
 import to.appconfigs.TOAppConfig;
+import to.note.TONote;
 
 public class TOClient extends AbstractTOObject {
 
@@ -17,6 +19,7 @@ public class TOClient extends AbstractTOObject {
 	private boolean blocked;
 	private boolean changePassword;
 	private TOAppConfig appConfig;
+	private List<TONote> notes;
 	
 	public TOClient() {
 		this.setSecurityLevel("client");
@@ -71,5 +74,10 @@ public class TOClient extends AbstractTOObject {
 	public void setAppConfig(TOAppConfig appConfig) {
 		this.appConfig = appConfig;
 	}
-	
+	public List<TONote> getNotes() {
+		return notes;
+	}
+	public void setNotes(List<TONote> notes) {
+		this.notes = notes;
+	}
 }

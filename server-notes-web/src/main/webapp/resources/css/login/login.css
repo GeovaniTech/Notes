@@ -40,8 +40,9 @@ body {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	background-image: url('/investme/resources/images/background.jpg');
+	background-image: url('/notes/resources/images/books-seamless.png');
 	background-position: center;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .container {
@@ -53,7 +54,7 @@ body {
 	height: 70vh;
 	width: 390px;
 	
-	padding: 30px;
+	padding: 0px 20px 20px 20px;
 	border-radius: 15px;
 	background-color: var(--background-general);
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1), 0 4px 16px 0 rgba(0,0,0,0.15);

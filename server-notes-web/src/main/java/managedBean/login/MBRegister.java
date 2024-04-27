@@ -63,22 +63,22 @@ public class MBRegister extends AbstractMBean {
 	}
 	
 	public void sendConfirmationTokenEmail(String email) {
-		String title = "InvestMe - Confirmação de email";
+		String title = "Notes - Confirmação de email";
 		
 		StringBuilder description = new StringBuilder();
 		
-		description.append("<h2>Confirme o seu cadastro no InvestMe</h2>");
+		description.append("<h2>Confirme o seu cadastro no Notes</h2>");
 		description.append("<p>Olá,	</p>");
-		description.append("<p>Agradecemos por se cadastrar no InvestMe! ");
+		description.append("<p>Agradecemos por se cadastrar no Notes! ");
 		description.append("Estamos felizes em tê-lo(a) como nosso(a) cliente.</p>");
 		description.append("Para finalizar o seu cadastro, por favor, confirme a sua conta clicando no link abaixo:</p>");
-		description.append("<p><a href=https://www.devpree.com.br/investme/register/");
+		description.append("<p><a href=http://localhost:8080/notes/register/");
 		description.append(JWTUtil.generateToken("registerToken", EncryptionUtil.encryptNormalText(email)) + ">");
 		description.append("Finalizar Cadastro</a></p>");
-		description.append("<p>Caso você não tenha criado uma conta no InvestMe ");
+		description.append("<p>Caso você não tenha criado uma conta no Notes ");
 		description.append("ou acredite que este email tenha sido enviado por engano, por favor, desconsidere esta mensagem.</p>");
 		description.append("Atenciosamente, <br>");
-		description.append("A equipe InvestMe <br>");
+		description.append("A equipe Devpree <br>");
 		
 		TOLog log = new TOLog();
 		log.setCategory(EnumLogCategory.REGISTER_EMAIL);

@@ -40,7 +40,7 @@ public class ClientSecurityLevelFilter extends HttpFilter implements Filter {
 		
 		if(client == null) {
 			response.setStatus(401);
-			response.sendRedirect("/investme/login");
+			response.sendRedirect("/notes/login");
 
 		} else {
 			chain.doFilter(request, response);

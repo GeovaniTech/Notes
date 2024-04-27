@@ -18,7 +18,7 @@
 		<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css' />
 		<link href="https://fonts.googleapis.com/css2?family=Poppins&#38;display=swap" rel="stylesheet"></link>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-		<link rel="shortcut icon" href="/investme/resources/images/ico-investme.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="/notes/resources/images/notes-ico.ico" type="image/x-icon" />
 						
 		<h:outputStylesheet library="css" name="/patterns/others.css" />
 		<h:outputStylesheet library="css" name="/patterns/texts.css" />
@@ -50,12 +50,12 @@
 		</style>
 		
 		<h:form id="formError">
-			<img src="/investme/resources/images/error.svg" alt="#{label.msg_error_page}"/>
+			<img src="/notes/resources/images/error.svg" alt="#{label.msg_error_page}"/>
 			<p>#{label.msg_error_page}</p>
 			
 			<p:commandButton 
 				value="#{label.back}"
-				action="#{MBAppConfigs.redirectTo('/investme/client/wallet')}"
+				action="#{MBAppConfigs.redirectTo('/notes/home')}"
 				icon="pi pi-arrow-left"
 				style="width: 300px;"
 				styleClass="mg-t-20" />

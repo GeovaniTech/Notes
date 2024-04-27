@@ -308,7 +308,7 @@ public class KeepClientSBean extends AbstractKeep<Client, TOClient> implements I
 			
 			this.getEntityManager().merge(client); 
 			
-			RedirectURL.redirectTo("/investme/login/finished");
+			RedirectURL.redirectTo("/notes/login/finished");
 			
 			return;
 		}
