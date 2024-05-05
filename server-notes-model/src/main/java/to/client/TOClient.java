@@ -9,7 +9,6 @@ public class TOClient extends AbstractTOObject {
 
 	private static final long serialVersionUID = -7590357042811071338L;
 	
-	private int id;
 	private String email;
 	private String phoneNumber;
 	private String securityLevel;
@@ -23,12 +22,6 @@ public class TOClient extends AbstractTOObject {
 	}
 	
 	// Getters and Setters
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public String getEmail() {
 		return email;
 	}

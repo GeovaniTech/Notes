@@ -5,19 +5,12 @@ import abstracts.AbstractTOObject;
 public class TOAppConfig extends AbstractTOObject {
 	private static final long serialVersionUID = -187618168381057175L;
 	
-	private int id;
 	private String language;
 	private boolean darkMode;
 	private boolean showValues;
 	private boolean showValuesStartUp;
 	
 	// Getters and Setters
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public String getLanguage() {
 		return language;
 	}

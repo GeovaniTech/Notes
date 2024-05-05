@@ -22,6 +22,15 @@
 		<module>server-notes-utils</module>
 		<module>server-notes</module>
 	</modules>
+	
+	<profiles>
+		<profile>
+			<id>services</id>
+			<modules>
+				<module>service-notes-api</module>
+			</modules>
+		</profile>
+	</profiles>
 
 	<distributionManagement>
 		<repository>
@@ -67,6 +76,12 @@
 			<dependency>
 				<groupId>br.com.devpree</groupId>
 				<artifactId>server-notes</artifactId>
+				<version>1.0.X-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.devpree</groupId>
+				<artifactId>service-notes-api</artifactId>
 				<version>1.0.X-SNAPSHOT</version>
 			</dependency>
 		</dependencies>

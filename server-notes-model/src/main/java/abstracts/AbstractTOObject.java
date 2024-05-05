@@ -6,7 +6,7 @@ import java.util.Date;
 public class AbstractTOObject implements Serializable {
     private static final long serialVersionUID = -5842360621544505239L;
 	
-    private Integer id;
+    private String id;
     private String creationUser;
     private Date creationDate;
     
@@ -52,11 +52,10 @@ public class AbstractTOObject implements Serializable {
 	public void setInactivationDate(Date inactivationDate) {
 		this.inactivationDate = inactivationDate;
 	}
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
 }

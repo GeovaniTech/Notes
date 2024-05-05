@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.List;
 
 import abstracts.AbstractObject;
 import jakarta.persistence.CascadeType;
@@ -9,14 +8,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Client extends AbstractObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private String id;
 	private String email;
 	private String password;
 	private String securityLevel;
@@ -32,17 +30,17 @@ public class Client extends AbstractObject {
 		this.setBlocked(false);
 	}
 
-	// Getters and Setters
-	public int getId() {
+	// Getters and Setters	
+	public String getEmail() {
+		return email;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
 	}
 
 	public void setEmail(String email) {

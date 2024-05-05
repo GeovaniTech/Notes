@@ -1,15 +1,14 @@
-package model;
+package br.com.notes.api.notes.model;
 
 import abstracts.AbstractObject;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "note")
 public class Note extends AbstractObject {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String title;
 	private String description;
@@ -17,12 +16,6 @@ public class Note extends AbstractObject {
 	// Getters and Setters
 	public String getTitle() {
 		return title;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -32,5 +25,11 @@ public class Note extends AbstractObject {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 }

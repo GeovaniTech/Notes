@@ -16,7 +16,7 @@ import jakarta.persistence.Lob;
 public class Log extends AbstractObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private String id;
 	private String ip;
 	
 	@Enumerated(EnumType.STRING)
@@ -29,11 +29,11 @@ public class Log extends AbstractObject {
 	@Column
 	private String stack;
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

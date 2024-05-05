@@ -210,7 +210,7 @@ public class KeepClientSBean extends AbstractKeep<Client, TOClient> implements I
 	}
 
 	@Override
-	public TOClient findById(int id) {
+	public TOClient findById(String id) {
 		Client client = this.getEntityManager().find(Client.class, id);
 		
 		if(client != null) {
@@ -359,7 +359,7 @@ public class KeepClientSBean extends AbstractKeep<Client, TOClient> implements I
 	}
 	
 	@Override
-	public boolean existsClientByEmail(String email, int clientId) {
+	public boolean existsClientByEmail(String email, String clientId) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT C FROM ")
 			.append(Client.class.getSimpleName()).append(" C ")
