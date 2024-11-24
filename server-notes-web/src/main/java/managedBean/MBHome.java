@@ -32,7 +32,7 @@ public class MBHome extends AbstractMBean {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public String getUrl() {
 		return url;
 	}
