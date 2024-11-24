@@ -3,6 +3,11 @@
 	xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	 
+	<url-mapping id="note">
+		<pattern value="/#{noteId}" />
+		<view-id value="/htdocs/note.xhtml" />
+	</url-mapping>
+	
 	<url-mapping id="home">
 		<pattern value="/#{noteId}" />
 		<view-id value="/htdocs/home.xhtml" />

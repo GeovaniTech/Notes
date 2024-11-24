@@ -1,12 +1,9 @@
 package keep.note;
 
-import java.util.List;
-
 import abstracts.AbstractKeep;
 import jakarta.ejb.Stateless;
 import jakarta.ejb.TransactionManagement;
 import jakarta.ejb.TransactionManagementType;
-import jakarta.persistence.Query;
 import model.Note;
 import to.TONote;
 

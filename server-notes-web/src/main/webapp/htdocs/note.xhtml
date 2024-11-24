@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:components="http://java.sun.com/jsf/composite/components"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+	
+	<h:head>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Notes</title>
+		
+		<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css' />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&#38;display=swap" rel="stylesheet"></link>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+		<link rel="shortcut icon" href="/notes/resources/images/notes-ico.ico" type="image/x-icon" />
+						
+		<h:outputStylesheet library="css" name="/patterns/others.css" />
+		<h:outputStylesheet library="css" name="/patterns/texts.css" />
+		<h:outputStylesheet library="css" name="/patterns/alignments.css" />
+		<h:outputStylesheet library="css" name="/patterns/components-primefaces.css" />
+		<h:outputStylesheet library="css" name="note.css" />
+		<h:outputStylesheet library="css" name="colors.css" />	
+	</h:head>
+	
+	<f:view id="view-locale">	
+		<f:metadata>
+			<f:viewParam name="noteId" value="#{MBNote.noteId}" />
+		</f:metadata>	
+	
+		<h:body id="body">
+			<p:growl id="growl" showDetail="false" />	
+			
+			<h:form id="formNotes">
+				<p:remoteCommand 
+					name="loadNoteFromURL"
+					autoRun="true"
+					action="#{MBNote.loadNoteFromURL}"
+					update="formNotes:global-container" />
+				
+				<p:poll 
+					interval="30"
+					listener="#{MBNote.saveNote()}" 
+					update="growl, formNotes:global-container" />
+					
+				<p:ajaxStatus>
+					<f:facet name="start">
+						<div class="ajax-loading" />
+					</f:facet>
+	
+					<f:facet name="complete" />
+				</p:ajaxStatus>
+	
+				<div jsf:id="global-container">
+					<div class="container-new-edit-notes" jsf:rendered="#{MBNote.note != null}">
+						<p:inputText 
+							placeholder="#{label.title}"
+							value="#{MBNote.note.title}"
+							style="width: 100%;"
+							styleClass="mg-b-10">
+							
+							<p:ajax 
+								event="keyup"
+								process="@this"
+								delay="500"
+								update="formNotes:toolbar" />
+						</p:inputText>
+							
+						<p:textEditor 
+							secure="false"
+							value="#{MBNote.note.description}"
+							placeholder="#{label.your_note}"
+							styleClass="editor">
+						
+							<p:ajax 
+								event="keyup"
+								process="@this"
+								delay="500"
+								update="formNotes:toolbar" />
+						</p:textEditor>
+						
+						<p:toolbar id="toolbar">
+							<f:facet name="left">
+								<p:commandButton 
+									value="#{label.save}"
+									icon="pi pi-save" 
+									action="#{MBNote.saveNote()}"
+									update="growl"
+									disabled="#{MBNote.note.title == null and MBNote.note.description == null}"
+									styleClass="mg-r-5"/>
+							</f:facet>
+						</p:toolbar>
+					</div>
+				</div>
+			</h:form>
+		</h:body>
+	</f:view>
+</html>

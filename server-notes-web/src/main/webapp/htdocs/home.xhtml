@@ -13,7 +13,7 @@
 	<h:head>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>#{label.my_notes}</title>
+		<title>Notes</title>
 		
 		<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css' />
 		<link href="https://fonts.googleapis.com/css2?family=Poppins&#38;display=swap" rel="stylesheet"></link>
@@ -28,74 +28,26 @@
 		<h:outputStylesheet library="css" name="colors.css" />	
 	</h:head>
 	
-	<f:view id="view-locale">	
-		<f:metadata>
-			<f:viewParam name="noteId" value="#{MBHome.noteId}" />
-		</f:metadata>	
-	
+	<f:view id="view-locale">		
 		<h:body id="body">
 			<p:growl id="growl" showDetail="false" />	
 			
-			<h:form id="formNotes">
-				<p:remoteCommand 
-					name="loadNoteFromURL"
-					autoRun="true"
-					action="#{MBHome.loadNoteFromURL}"
-					update="formNotes:global-container" />
+			<h:form id="home">
+				<img src="/notes/resources/images/notes-logo-with-name.png"></img>
 				
-				<p:poll 
-					interval="30"
-					listener="#{MBHome.saveNote()}" 
-					update="growl, formNotes:global-container" />
+				<div class="content">
+					<p:inputText 
+						value="notes.devpree.com.br/"
+						disabled="true"
+						style="width: 180px" />
+						
+					<p:inputText 
+						placeholder="#{label.url_page}"
+						value="#{MBHome.url}" />
 					
-				<p:ajaxStatus>
-					<f:facet name="start">
-						<div class="ajax-loading" />
-					</f:facet>
-	
-					<f:facet name="complete" />
-				</p:ajaxStatus>
-	
-				<div jsf:id="global-container">
-					<div class="container-new-edit-notes" jsf:rendered="#{MBHome.note != null}">
-						<p:inputText 
-							placeholder="#{label.title}"
-							value="#{MBHome.note.title}"
-							style="width: 100%;"
-							styleClass="mg-b-10">
-							
-							<p:ajax 
-								event="keyup"
-								process="@this"
-								delay="500"
-								update="formNotes:toolbar" />
-						</p:inputText>
-							
-						<p:textEditor 
-							secure="false"
-							value="#{MBHome.note.description}"
-							placeholder="#{label.your_note}"
-							styleClass="editor">
-						
-							<p:ajax 
-								event="keyup"
-								process="@this"
-								delay="500"
-								update="formNotes:toolbar" />
-						</p:textEditor>
-						
-						<p:toolbar id="toolbar">
-							<f:facet name="left">
-								<p:commandButton 
-									value="#{label.save}"
-									icon="pi pi-save" 
-									action="#{MBHome.saveNote()}"
-									update="growl"
-									disabled="#{MBHome.note.title == null and MBHome.note.description == null}"
-									styleClass="mg-r-5"/>
-							</f:facet>
-						</p:toolbar>
-					</div>
+					<p:commandButton 
+						value="Go to Note"
+						action="#{MBHome.redirectTo()}"/>
 				</div>
 			</h:form>
 		</h:body>

@@ -1,89 +1,43 @@
 package managedBean;
 
+import java.io.IOException;
+
 import abstracts.AbstractMBean;
-import jakarta.ejb.EJB;
-import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
-import keep.note.IKeepNoteSbean;
-import to.TONote;
-import utils.MessageUtil;
-import utils.StringUtil;
 
-@Named(MBHome.MANAGED_BEAN_NAME)	
+@Named(MBHome.MANAGED_BEAN_NAME)
 @ViewScoped
 public class MBHome extends AbstractMBean {
-	
-	private static final long serialVersionUID = 8184287297629627293L;
+
+	private static final long serialVersionUID = -7977619792071655879L;
 	public static final String MANAGED_BEAN_NAME = "MBHome";
 	
-	private String noteId;
-	private TONote note;
-
-	@EJB
-	private IKeepNoteSbean noteSbean;
+	private String url;
 	
-	/**
-	 * Will try to find the note based on the user url, if does not exits, a new note will be created
-	 */
-	public void loadNoteFromURL() {
-		if (StringUtil.isNotNull(this.getNoteId())) {
-			TONote note = this.getNoteSbean().findNoteById(this.getNoteId());
-			
-			if (note == null) {
-				this.initNewNote();
-				return;
-			}
-			
-			this.setNote(note);
+	public void redirectTo() {
+		int firstBar = this.getUrl().indexOf('/');
+		
+		if (firstBar != -1) {
+			this.setUrl(this.getUrl().substring(0, firstBar));
 		}
-	}
-	
-	/**
-	 * Save the note actual note clicking in the button or automatically after
-	 * each 30 seconds by polling.
-	 */
-	public void saveNote() {
+		
+		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		
 		try {
-			if (this.getNote() != null && (StringUtil.isNotNull(this.getNote().getTitle())
-					|| StringUtil.isNotNull(this.getNote().getDescription()))) {
-				
-				this.getNoteSbean().change(this.getNote());
-
-				MessageUtil.sendMessage(MessageUtil.getMessageFromProperties("msg_saving"), FacesMessage.SEVERITY_INFO);
-			}
-		} catch (Exception e) {
-			showMessageError(e);
+			ec.redirect(this.getUrl());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
-	
-	public void initNewNote() {
-		this.setNote(new TONote());
-		this.getNote().setId(this.getNoteId());
-		this.getNoteSbean().save(this.getNote());
+
+	public String getUrl() {
+		return url;
 	}
 
-	public TONote getNote() {
-		return note;
-	}
-
-	public void setNote(TONote note) {
-		this.note = note;
-	}
-
-	public IKeepNoteSbean getNoteSbean() {
-		return noteSbean;
-	}
-
-	public void setNoteSbean(IKeepNoteSbean noteSbean) {
-		this.noteSbean = noteSbean;
-	}
-
-	public String getNoteId() {
-		return noteId;
-	}
-
-	public void setNoteId(String noteId) {
-		this.noteId = noteId;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
