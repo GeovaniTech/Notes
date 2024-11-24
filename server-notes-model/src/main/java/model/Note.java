@@ -1,11 +1,10 @@
 package model;
 
-import abstracts.AbstractObject;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Note extends AbstractObject {
+public class Note {
 	@Id
 	private String id;
 	private String title;

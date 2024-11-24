@@ -8,10 +8,7 @@
 
 		<jta-data-source>java:/notes_db</jta-data-source>
 		
-		<class>model.AppConfig</class>
-		<class>model.Client</class>
 		<class>model.Note</class>
-		<class>model.Log</class>
 		
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

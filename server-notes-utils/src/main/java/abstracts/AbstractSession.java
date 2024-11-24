@@ -6,7 +6,6 @@ import jakarta.faces.context.FacesContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import to.client.TOClient;
 
 public abstract class AbstractSession {
 	protected HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -22,9 +21,6 @@ public abstract class AbstractSession {
 		return session;
 	}
 	
-	protected TOClient getClientSession() {
-		return (TOClient) getSession().getAttribute("client");
-	}
 	
 	protected void finishSession() {
 		this.getSession().setAttribute("client", null);

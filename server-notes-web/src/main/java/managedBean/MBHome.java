@@ -1,8 +1,4 @@
-package managedBean.home;
-
-import java.util.List;
-
-import org.primefaces.PrimeFaces;
+package managedBean;
 
 import abstracts.AbstractMBean;
 import jakarta.ejb.EJB;
@@ -10,7 +6,7 @@ import jakarta.faces.application.FacesMessage;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import keep.note.IKeepNoteSbean;
-import to.note.TONote;
+import to.TONote;
 import utils.MessageUtil;
 import utils.StringUtil;
 
@@ -23,8 +19,6 @@ public class MBHome extends AbstractMBean {
 	
 	private String noteId;
 	private TONote note;
-	
-	private List<TONote> notes;
 
 	@EJB
 	private IKeepNoteSbean noteSbean;
@@ -68,10 +62,6 @@ public class MBHome extends AbstractMBean {
 		this.getNote().setId(this.getNoteId());
 		this.getNoteSbean().save(this.getNote());
 	}
-	
-	public void cancelNote() {
-		this.setNote(null);
-	}
 
 	public TONote getNote() {
 		return note;
@@ -79,14 +69,6 @@ public class MBHome extends AbstractMBean {
 
 	public void setNote(TONote note) {
 		this.note = note;
-	}
-
-	public List<TONote> getNotes() {
-		return notes;
-	}
-
-	public void setNotes(List<TONote> notes) {
-		this.notes = notes;
 	}
 
 	public IKeepNoteSbean getNoteSbean() {
