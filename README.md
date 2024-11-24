@@ -1,5 +1,5 @@
 # Notes
-A project to save/share texts in a easy way, just specify a name for your page using <code>notes.devpree.com.br/your-page-name</code> and you will have a web text editor to use, you can save the content and just share the entire url.
+A project to save/share texts in an easy way, just specify a name for your page using <code>notes.devpree.com.br/your-page-name</code> and you will have a web text editor to use, you can save the content and just share the entire url.
 
 > [!WARNING]
 > Your content can be overridden/viewed by other users if they use the same name, so choose a good name for your page and don't even think about share personal informations.
