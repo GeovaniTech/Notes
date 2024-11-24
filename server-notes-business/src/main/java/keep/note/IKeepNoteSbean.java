@@ -10,4 +10,5 @@ public interface IKeepNoteSbean {
 	public void save(TONote note);
 	public void change(TONote note);
 	public List<TONote> getNotes();
+	public TONote findNoteById(String id);
 }

@@ -2,14 +2,11 @@ package model;
 
 import abstracts.AbstractObject;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Note extends AbstractObject {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	private String title;
 	private String description;

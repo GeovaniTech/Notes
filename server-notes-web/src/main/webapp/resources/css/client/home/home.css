@@ -1,67 +1,12 @@
 @charset "UTF-8";
 
-.left-menu {
-	width: 250px;
-	left:0;
-	transition: 0.4s;
-	height: 100%;
-	position: fixed;
-	top: 0px;
-	background-color: var(--background-general);
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	font-family: 'Poppins', sans-serif;
-	z-index: 2;
-	overflow: hidden;
-	margin-right: 250px;
-}
-
-.left-menu .item {
-	padding: 10px;
-	width: 100%;
-	transition: 0.4s;
-	border-radius: 5px;
-}
-
-.item p {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.item:hover {
-	background-color: var(--background-general-mouse);
-}
-
-.button:hover {
-	background-color: var(--background-general);
-}
-
-.submenu {
-	padding: 10px;
-	width: 100%;
-}
-
-.submenu p {
-	border-bottom: 1px solid #D3D3D3;
-}
-
-.logout {
-	background-color: var(--background-general-mouse);
-	bottom: 0px;
-	position: absolute;
-}
-
 .container-new-edit-notes {
 	padding: 10px;	
 }
 
 .editor {
-	height: 80vh!important;
+	height: 80vh !important;
 	margin-bottom: 50px;
-}
-
-.container-new-edit-notes, .empty-notes {
-	padding-left: 260px;
 }
 
 .empty-notes {

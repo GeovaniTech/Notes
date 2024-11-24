@@ -33,6 +33,10 @@ public abstract class AbstractKeep<model, to> extends AbstractSession {
 
 	@SuppressWarnings("unchecked")
 	public to convertToDTO(model obj) {
+		if (obj == null) {
+			return null;
+		} 
+		
 		return (to) this.getConverter().map(obj, this.getToClass());
 	}
 

@@ -28,7 +28,6 @@ public class KeepNoteSBean extends AbstractKeep<Note, TONote> implements IKeepNo
 	@Override
 	public void change(TONote note) {
 		Note model = this.convertToModel(note);
-		
 		this.getEntityManager().merge(model);
 	}
 
@@ -43,5 +42,10 @@ public class KeepNoteSBean extends AbstractKeep<Note, TONote> implements IKeepNo
 		query.setParameter("email", getClientSession().getEmail());
 		
 		return this.convertModelResults(query.getResultList());
+	}
+
+	@Override
+	public TONote findNoteById(String id) {
+		return this.convertToDTO(this.getEntityManager().find(Note.class, id));
 	}
 }

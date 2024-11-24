@@ -29,20 +29,25 @@
 		<h:outputScript library="js" name="dialog.js"/>
 	</h:head>
 	
-	<h:body id="body">
-		<p:growl id="growl" showDetail="false" />	
-		
-		<f:view locale="#{MBAppConfigs.appConfigs.language}" id="view-locale">	
+	<f:view id="view-locale">	
+		<f:metadata>
+			<f:viewParam name="noteId" value="#{MBHome.noteId}" />
+		</f:metadata>	
+	
+		<h:body id="body">
+			<p:growl id="growl" showDetail="false" />	
+			
 			<h:form id="formNotes">
 				<p:remoteCommand 
-					name="addNewNote"
-					action="#{MBHome.initNewNote()}"
-					update="global-container"/>
+					name="loadNoteFromURL"
+					autoRun="true"
+					action="#{MBHome.loadNoteFromURL}"
+					update="formNotes:global-container" />
 				
 				<p:poll 
 					interval="30"
-					listener="#{MBHome.savePolling()}" 
-					update="growl, menu" />
+					listener="#{MBHome.saveNote()}" 
+					update="growl, formNotes:global-container" />
 					
 				<p:ajaxStatus>
 					<f:facet name="start">
@@ -52,51 +57,8 @@
 					<f:facet name="complete" />
 				</p:ajaxStatus>
 	
-				<div jsf:id="menu" class="left-menu">
-					<div class="item button">
-						<p:commandButton 
-							value="#{label.new_note}" 
-							icon="pi pi-plus"
-							action="#{MBHome.initNewNote()}"
-							update="formNotes:global-container"
-							style="width: 100%; text-overflow: ellipsis;" />
-					</div>
-	
-					<div class="submenu">
-						<p>#{label.notes}</p>
-					</div>
-					
-					<p:scrollPanel style="height: 80vh;" mode="native">
-						<ui:repeat var="note" value="#{MBHome.notes}">
-							<p:commandLink 
-								action="#{MBHome.setNote(note)}" 
-								update="@form"
-								style="text-decoration: none;">
-	
-								<div class="item">
-									<p>#{note.title}</p>
-								</div>
-							</p:commandLink>
-						</ui:repeat>
-						
-						<div style="height: 50px;"/>
-					</p:scrollPanel>
-					
-					<p:commandLink
-						action="#{MBAppConfigs.logout()}">
-						<div class="item logout">
-							<p>#{label.logout}</p>
-						</div>
-					</p:commandLink>
-				</div>
-	
 				<div jsf:id="global-container">
-					<div jsf:rendered="#{MBHome.note == null}" class="empty-notes" onclick="addNewNote();">
-						<img src="/notes/resources/images/add_notes.svg" />
-						<p>#{label.msg_add_new_notes_or_select_one}</p>
-					</div>
-		
-					<div jsf:rendered="#{MBHome.note != null}" class="container-new-edit-notes">
+					<div class="container-new-edit-notes" jsf:rendered="#{MBHome.note != null}">
 						<p:inputText 
 							placeholder="#{label.title}"
 							value="#{MBHome.note.title}"
@@ -128,22 +90,15 @@
 								<p:commandButton 
 									value="#{label.save}"
 									icon="pi pi-save" 
-									action="#{MBHome.savePolling()}"
-									update="growl, menu"
+									action="#{MBHome.saveNote()}"
+									update="growl"
 									disabled="#{MBHome.note.title == null and MBHome.note.description == null}"
 									styleClass="mg-r-5"/>
-								
-								<p:commandButton 
-									value="#{label.cancel}"
-									action="#{MBHome.cancelNote()}"
-									update="formNotes:global-container"
-									icon="pi pi-times"
-									styleClass="deleteStyle" />
 							</f:facet>
 						</p:toolbar>
 					</div>
 				</div>
 			</h:form>
-		</f:view>
-	</h:body>
+		</h:body>
+	</f:view>
 </html>
