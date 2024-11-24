@@ -4,7 +4,7 @@ A project to save/share texts in an easy way, just specify a name for your page 
 > [!WARNING]
 > Your content can be overridden/viewed by other users if they use the same name, so choose a good name for your page and don't even think about share personal informations.
 
-[Access Notes](https://www.devpree.com.br/investme/login) </br>
+[Access Notes](https://notes.devpree.com.br) </br>
 
 ## Technologies
 
