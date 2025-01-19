@@ -42,11 +42,6 @@
 					autoRun="true"
 					action="#{MBNote.loadNoteFromURL}"
 					update="formNotes:global-container" />
-				
-				<p:poll 
-					interval="30"
-					listener="#{MBNote.saveNote()}" 
-					update="growl, formNotes:global-container" />
 					
 				<p:ajaxStatus>
 					<f:facet name="start">
