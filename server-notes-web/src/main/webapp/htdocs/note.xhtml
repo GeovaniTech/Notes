@@ -13,7 +13,7 @@
 	<h:head>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Notes</title>
+		<title jsf:id="title">Notes - #{MBNote.note.id != null ? MBNote.note.id : 'URL'}</title>
 		
 		<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css' />
 		<link href="https://fonts.googleapis.com/css2?family=Poppins&#38;display=swap" rel="stylesheet"></link>
@@ -41,7 +41,7 @@
 					name="loadNoteFromURL"
 					autoRun="true"
 					action="#{MBNote.loadNoteFromURL}"
-					update="formNotes:global-container" />
+					update="formNotes:global-container, :title" />
 					
 				<p:ajaxStatus>
 					<f:facet name="start">
