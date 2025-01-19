@@ -6,16 +6,9 @@ public class TONote implements Serializable {
 	private static final long serialVersionUID = -4808383928943704518L;
 	
 	private String id;
-	private String title;
 	private String description;
 	
 	// Getters and setters
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	public String getDescription() {
 		return description;
 	}

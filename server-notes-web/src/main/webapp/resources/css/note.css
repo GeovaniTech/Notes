@@ -5,7 +5,7 @@
 }
 
 .editor {
-	height: 80vh !important;
+	height: calc(100vh - 130px) !important;
 	margin-bottom: 50px;
 }
 

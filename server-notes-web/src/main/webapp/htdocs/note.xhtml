@@ -58,19 +58,6 @@
 	
 				<div jsf:id="global-container">
 					<div class="container-new-edit-notes" jsf:rendered="#{MBNote.note != null}">
-						<p:inputText 
-							placeholder="#{label.title}"
-							value="#{MBNote.note.title}"
-							style="width: 100%;"
-							styleClass="mg-b-10">
-							
-							<p:ajax 
-								event="keyup"
-								process="@this"
-								delay="500"
-								update="formNotes:toolbar" />
-						</p:inputText>
-							
 						<p:textEditor 
 							secure="false"
 							value="#{MBNote.note.description}"
@@ -91,7 +78,7 @@
 									icon="pi pi-save" 
 									action="#{MBNote.saveNote()}"
 									update="growl"
-									disabled="#{MBNote.note.title == null and MBNote.note.description == null}"
+									disabled="#{MBNote.note.description == null}"
 									styleClass="mg-r-5"/>
 							</f:facet>
 						</p:toolbar>

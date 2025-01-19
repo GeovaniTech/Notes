@@ -40,16 +40,12 @@ public class MBNote extends AbstractMBean {
 	}
 	
 	/**
-	 * Save the note actual note clicking in the button or automatically after
-	 * each 30 seconds by polling.
+	 * Save the note actual note clicking in the button
 	 */
 	public void saveNote() {
 		try {
-			if (this.getNote() != null && (StringUtil.isNotNull(this.getNote().getTitle())
-					|| StringUtil.isNotNull(this.getNote().getDescription()))) {
-				
+			if (this.getNote() != null && StringUtil.isNotNull(this.getNote().getDescription())) {
 				this.getNoteSbean().change(this.getNote());
-
 				MessageUtil.sendMessage(MessageUtil.getMessageFromProperties("msg_saving"), FacesMessage.SEVERITY_INFO);
 			}
 		} catch (Exception e) {
