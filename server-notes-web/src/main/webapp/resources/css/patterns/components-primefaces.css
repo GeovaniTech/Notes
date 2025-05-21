@@ -50,6 +50,21 @@
 	background-color: var(--primary-color-sys-mouse) !important;
 }
 
+/* Secondary button */
+.ui-button-secondary {
+	color: var(--primary-color-sys) !important;
+	background-color: white !important;
+	border: 1px solid var(--primary-color-sys) !important;
+}
+
+/* On hover: subtle background tint */
+.ui-button-secondary:hover {
+	color: var(--primary-color-sys) !important;
+	background-color: white !important;
+	border-color: var(--primary-color-sys-mouse) !important;
+}
+
+
 .optionsButtonStyle {
 	background-color: var(--background-general) !important;
 	border-color: transparent !important;

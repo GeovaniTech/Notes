@@ -54,14 +54,13 @@
 				<div jsf:id="global-container">
 					<div class="container-new-edit-notes" jsf:rendered="#{MBNote.note != null}">
 						<p:textEditor 
-							secure="false"
+							secure="true"
 							value="#{MBNote.note.description}"
 							placeholder="#{label.your_note}"
 							styleClass="editor">
 						
 							<p:ajax 
 								event="keyup"
-								process="@this"
 								delay="500"
 								update="formNotes:toolbar" />
 						</p:textEditor>
@@ -72,14 +71,44 @@
 									value="#{label.save}"
 									icon="pi pi-save" 
 									action="#{MBNote.saveNote()}"
-									update="growl"
-									disabled="#{MBNote.note.description == null}"
+									update="growl, @form"
+									disabled="#{!MBNote.isButtonsEnabled()}"
 									styleClass="mg-r-5"/>
+
+								<p:commandButton 
+									value="#{label.clear_content}"
+									icon="pi pi-trash" 
+									action="#{MBNote.clear()}"
+									update="growl, @form:global-container"
+									disabled="#{!MBNote.isButtonsEnabled()}"
+									styleClass="mg-r-5 ui-button-secondary"/>
+									
+								<p:commandButton 
+									value="#{label.copy}"
+									icon="pi pi-copy" 
+									action="#{MBNote.copy()}"
+									update="growl"
+									disabled="#{!MBNote.isButtonsEnabled()}"
+									styleClass="mg-r-5 ui-button-secondary "/>
 							</f:facet>
 						</p:toolbar>
 					</div>
 				</div>
 			</h:form>
 		</h:body>
+		
+		<script>
+			function copy(text) {
+				  const tempDiv = document.createElement("div");
+				  tempDiv.innerHTML = text;
+				  tempDiv.style.position = "absolute";
+				  tempDiv.style.left = "-9999px";
+				  document.body.appendChild(tempDiv);
+
+				  const plainText = tempDiv.innerText;
+				  
+			  	navigator.clipboard.writeText(plainText);
+			}
+		</script>
 	</f:view>
 </html>

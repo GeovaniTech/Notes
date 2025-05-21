@@ -1,5 +1,11 @@
 package managedBean;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
+import org.primefaces.PrimeFaces;
+
 import abstracts.AbstractMBean;
 import jakarta.ejb.EJB;
 import jakarta.faces.application.FacesMessage;
@@ -51,6 +57,19 @@ public class MBNote extends AbstractMBean {
 		} catch (Exception e) {
 			showMessageError(e);
 		}
+	}
+	
+	public void clear() {
+		this.getNote().setDescription(null);
+	}
+	
+	public void copy() {
+		PrimeFaces.current().executeScript("copy('" + this.getNote().getDescription() + "')");
+		MessageUtil.sendMessage(MessageUtil.getMessageFromProperties("text_copied"), FacesMessage.SEVERITY_INFO);
+	}
+	
+	public boolean isButtonsEnabled() {
+		return !(this.getNote().getDescription() == null);
 	}
 	
 	public void initNewNote() {
