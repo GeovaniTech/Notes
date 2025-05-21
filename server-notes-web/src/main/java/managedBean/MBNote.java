@@ -59,12 +59,22 @@ public class MBNote extends AbstractMBean {
 		}
 	}
 	
+	/*
+	 * Clear the content of the textEditor
+	 */
 	public void clear() {
 		this.getNote().setDescription(null);
 	}
 	
+	/**
+	 * Copy the content of the textEditor removing all of the blank spaces.
+	 */
 	public void copy() {
-		PrimeFaces.current().executeScript("copy('" + this.getNote().getDescription() + "')");
+		String textWithoutSpace = this.getNote().getDescription().replaceAll("(?i)<br\\s*/?>", "")
+												                 .replaceAll("(?i)</p>", "<br>")
+												                 .replaceAll("(?i)<p.*?>", "");
+		
+		PrimeFaces.current().executeScript("copy(\"" + textWithoutSpace + "\")");
 		MessageUtil.sendMessage(MessageUtil.getMessageFromProperties("text_copied"), FacesMessage.SEVERITY_INFO);
 	}
 	
