@@ -64,6 +64,17 @@
 	border-color: var(--primary-color-sys-mouse) !important;
 }
 
+/* Success button */
+.ui-button-success {
+	color: #28a745 !important;
+	background-color: white !important;
+	border: 1px solid #28a745 !important;
+}
+
+.ui-button-success:hover {
+	background-color: white !important;
+	border-color: #1e7e34 !important;
+}
 
 .optionsButtonStyle {
 	background-color: var(--background-general) !important;

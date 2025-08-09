@@ -10,6 +10,8 @@ import jakarta.persistence.PersistenceContext;
 import utils.MessageUtil;
 
 public abstract class AbstractKeep<model, to> extends AbstractSession {	
+	protected static String BREAK_LINE = "\n";
+	
 	@PersistenceContext(unitName = "notes_datasource")
 	private EntityManager entityManager;
 	private ModelMapper converter = new ModelMapper();

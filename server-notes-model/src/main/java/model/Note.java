@@ -8,6 +8,7 @@ public class Note {
 	@Id
 	private String id;
 	private String description;
+	private String secret;
 	
 	// Getters and Setters
 	public String getId() {
@@ -21,5 +22,11 @@ public class Note {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getSecret() {
+		return secret;
+	}
+	public void setSecret(String secret) {
+		this.secret = secret;
 	}
 }

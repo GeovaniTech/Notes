@@ -35,6 +35,18 @@
 	
 		<h:body id="body">
 			<p:growl id="growl" showDetail="false" />	
+								
+			<components:requirePassword 
+				widgetVar="dialogCreateSecret"
+				text="#{label.msg_set_secret}"
+				action="#{MBNoteSecret.createSecret}"
+				inputValue="#{MBNoteSecret.userSecret}" />
+				
+			<components:requirePassword 
+				widgetVar="dialogValidateSecret"
+				text="#{label.msg_secret_required}"
+				action="#{MBNoteSecret.onConfirmSecret}"
+				inputValue="#{MBNoteSecret.userSecret}" />
 			
 			<h:form id="formNotes">
 				<p:remoteCommand 
@@ -43,6 +55,10 @@
 					action="#{MBNote.loadNoteFromURL}"
 					update="formNotes:global-container, :title" />
 					
+				<p:remoteCommand 
+					name="updateScreen"
+					update="formNotes:global-container" />
+
 				<p:ajaxStatus>
 					<f:facet name="start">
 						<div class="ajax-loading" />
@@ -52,7 +68,7 @@
 				</p:ajaxStatus>
 	
 				<div jsf:id="global-container">
-					<div class="container-new-edit-notes" jsf:rendered="#{MBNote.note != null}">
+					<div class="container-new-edit-notes" jsf:rendered="#{MBNote.note != null and MBNoteSecret.isAccessValid()}">
 						<p:textEditor 
 							secure="true"
 							value="#{MBNote.note.description}"
@@ -112,6 +128,17 @@
 									update="growl"
 									disabled="#{!MBNote.isButtonsEnabled()}"
 									styleClass="mg-r-5 ui-button-secondary "/>
+							</f:facet>
+							
+							<f:facet name="right">
+								<p:commandButton 
+									value="#{label.lock}"
+									icon="pi pi-lock"
+									update="growl"
+									rendered="#{MBNoteSecret.isValidToken() and !MBNoteSecret.hasSecret()}"
+									oncomplete="PF('dialogCreateSecret').show();"
+									styleClass="mg-r-5 ui-button-success"
+									style="width: 120px;" />
 							</f:facet>
 						</p:toolbar>
 					</div>

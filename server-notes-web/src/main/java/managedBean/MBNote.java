@@ -32,12 +32,15 @@ public class MBNote extends AbstractMBean {
 		if (StringUtil.isNotNull(this.getNoteId())) {
 			TONote note = this.getNoteSbean().findNoteById(this.getNoteId());
 			
-			if (note == null) {
+			boolean isNewNote = note == null;
+			
+			if (isNewNote) {
 				this.initNewNote();
-				return;
+			} else {
+				this.setNote(note);
 			}
 			
-			this.setNote(note);
+			this.getMBNoteSecret().init(this.getNote().getId(), isNewNote);
 		}
 	}
 	
@@ -84,6 +87,10 @@ public class MBNote extends AbstractMBean {
 		this.getNoteSbean().save(this.getNote());
 	}
 
+	private MBNoteSecret getMBNoteSecret() {
+		return this.getMBean(MBNoteSecret.MANAGED_BEAN_NAME);
+	}
+	
 	public TONote getNote() {
 		return note;
 	}
