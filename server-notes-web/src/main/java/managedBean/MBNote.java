@@ -1,9 +1,5 @@
 package managedBean;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-
 import org.primefaces.PrimeFaces;
 
 import abstracts.AbstractMBean;
@@ -50,7 +46,7 @@ public class MBNote extends AbstractMBean {
 	 */
 	public void saveNote() {
 		try {
-			if (this.getNote() != null && StringUtil.isNotNull(this.getNote().getDescription())) {
+			if (this.getNote() != null) {
 				this.getNoteSbean().change(this.getNote());
 				MessageUtil.sendMessage(MessageUtil.getMessageFromProperties("msg_saving"), FacesMessage.SEVERITY_INFO);
 			}
