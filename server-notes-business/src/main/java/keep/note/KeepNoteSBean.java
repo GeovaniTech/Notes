@@ -20,6 +20,7 @@ public class KeepNoteSBean extends AbstractKeep<Note, TONote> implements IKeepNo
 	@Override
 	public void save(TONote note) {
 		Note model = this.convertToModel(note);
+		model.setSecret(this.getSecretFromNote(model.getId()));
 		
 		this.getEntityManager().persist(model);
 		note.setId(model.getId());
@@ -28,6 +29,7 @@ public class KeepNoteSBean extends AbstractKeep<Note, TONote> implements IKeepNo
 	@Override
 	public void change(TONote note) {
 		Note model = this.convertToModel(note);
+		model.setSecret(this.getSecretFromNote(model.getId()));
 		this.getEntityManager().merge(model);
 	}
 
