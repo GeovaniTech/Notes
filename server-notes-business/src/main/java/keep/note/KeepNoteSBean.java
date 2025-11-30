@@ -1,5 +1,6 @@
 package keep.note;
 
+import java.util.Date;
 import java.util.StringJoiner;
 
 import abstracts.AbstractKeep;
@@ -21,9 +22,11 @@ public class KeepNoteSBean extends AbstractKeep<Note, TONote> implements IKeepNo
 	public void save(TONote note) {
 		Note model = this.convertToModel(note);
 		model.setSecret(this.getSecretFromNote(model.getId()));
+		model.setCreationDate(new Date());
 		
 		this.getEntityManager().persist(model);
 		note.setId(model.getId());
+		note.setCreationDate(model.getCreationDate());
 	}
 	
 	@Override

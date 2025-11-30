@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -9,6 +11,7 @@ public class Note {
 	private String id;
 	private String description;
 	private String secret;
+	private Date creationDate;
 	
 	// Getters and Setters
 	public String getId() {
@@ -28,5 +31,11 @@ public class Note {
 	}
 	public void setSecret(String secret) {
 		this.secret = secret;
+	}
+	public Date getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 }
