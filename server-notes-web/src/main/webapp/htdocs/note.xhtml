@@ -48,7 +48,7 @@
 				action="#{MBNoteSecret.onConfirmSecret}"
 				inputValue="#{MBNoteSecret.userSecret}" />
 			
-			<h:form id="formNotes">
+			<h:form id="formNotes">				
 				<p:remoteCommand 
 					name="loadNoteFromURL"
 					autoRun="true"
@@ -67,14 +67,28 @@
 					<f:facet name="complete" />
 				</p:ajaxStatus>
 	
-				<div jsf:id="global-container">
+				<div jsf:id="global-container">						
 					<div class="container-new-edit-notes" jsf:rendered="#{MBNote.note != null and MBNoteSecret.isAccessValid()}">
+						<p:remoteCommand
+							name="saveNote"
+							action="#{MBNote.saveAutomatically()}"
+							update="growl" />
+						
+						<h:inputHidden 
+							id="editorValue" 
+							value="#{MBNote.editorText}" />
+							
+						<p:poll 
+							interval="30"
+							oncomplete="updateEditorValueOnMbean();"/>
+						
 						<p:textEditor 
 							secure="true"
 							value="#{MBNote.note.description}"
 							placeholder="#{label.your_note}"
 							styleClass="editor"
-							allowImages="false">
+							allowImages="false"
+							widgetVar="textEditorWV">
 						
 						    <f:facet name="toolbar">						        
 						        <span class="ql-formats">
@@ -107,6 +121,7 @@
 						<p:toolbar id="toolbar">
 							<f:facet name="left">
 								<p:commandButton 
+									id="save"
 									value="#{label.save}"
 									icon="pi pi-save" 
 									action="#{MBNote.saveNote()}"
@@ -147,6 +162,19 @@
 		</h:body>
 		
 		<script>
+
+			/**
+			 * p:textEditor does not support ajaxs operations like valueChange,
+			 * so the idea is save the value using a temp inputHidden and get the
+			 * editor value using JS.
+			**/
+			function updateEditorValueOnMbean() {
+				const inputEditorValue = document.getElementById('formNotes:editorValue');
+				inputEditorValue.value = document.querySelector(".ql-editor").innerHTML;
+
+				saveNote();
+			}
+		
 			function copy(text) {
 				  const tempDiv = document.createElement("div");
 				  tempDiv.innerHTML = text;

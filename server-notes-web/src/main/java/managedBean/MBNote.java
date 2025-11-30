@@ -21,6 +21,8 @@ public class MBNote extends AbstractMBean {
 	
 	private String noteId;
 	private TONote note;
+	
+	private String editorText;
 
 	@EJB
 	private IKeepNoteSbean noteSbean;
@@ -55,6 +57,19 @@ public class MBNote extends AbstractMBean {
 			}
 		} catch (Exception e) {
 			showMessageError(e);
+		}
+	}
+	
+	
+	/**
+	 * Method called by a remoteCommand after updating a temp
+	 * inputHidden "editorText" using the actual value from the 
+	 * textEditor.
+	 */
+	public void saveAutomatically() {
+		if (StringUtil.isNotNull(this.getEditorText())) {
+			this.getNote().setDescription(this.getEditorText());
+			this.saveNote();
 		}
 	}
 	
@@ -113,5 +128,13 @@ public class MBNote extends AbstractMBean {
 
 	public void setNoteId(String noteId) {
 		this.noteId = noteId;
+	}
+
+	public String getEditorText() {
+		return editorText;
+	}
+
+	public void setEditorText(String editorText) {
+		this.editorText = editorText;
 	}
 }
