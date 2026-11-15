@@ -43,13 +43,6 @@
 	align-items: center;
 }
 
-.footer #port-logo {
-	width: 60px;
-	height: 33px;
-	margin-bottom: 0px;
-	margin-right: 10px;
-}
-
 .footer p {
 	font-size: 13px;
     color: gray;
